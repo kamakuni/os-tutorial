@@ -29,3 +29,11 @@ add bx, 0x7c00
 mov al, [bx]
 int 0x10
 
+; attempt 4
+; We try a shortcut since we know that the X is stored at byte 0x2d in our binary
+; That's smart but ineffective, we don't want to be recounting label offsets
+; every time we change the code
+mov al, "4"
+int 0x10
+mov al, [0x7c2d]
+int 0x10
