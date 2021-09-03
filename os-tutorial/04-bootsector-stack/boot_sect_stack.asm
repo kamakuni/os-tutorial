@@ -11,6 +11,11 @@ push 'C'
 mov al, [0x7ffe] ; 0x8000 - 2
 int 0x10
 
+; however, don't try to access [0x8000] now, because it won't work
+; you can only access the stack top so, at this point, 0x7ffe (look above)
+mov al, [0x8000]
+int 0x10
+
 ; recover our characters using the standard procedure: 'pop'
 ; We can only pop full words so we need an auxiliary register to manipulate
 ; the lower byte
