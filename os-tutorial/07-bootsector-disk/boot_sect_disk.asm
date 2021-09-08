@@ -14,4 +14,6 @@ disk_load:
     ; dl <- drive number, Our caller sets it as a parameter and gets it from BIOS
     ; (0 = floppy, 1 = floppy2, 0x80 = hdd, 0x81 = hdd2)
     mov dh, 0x00 ; dh <- head number (0x0 .. 0xF)
-    
+
+    int 0x13      ; BIOS interrupt
+    jc disk_error ; if error (stored in the carry bit)
