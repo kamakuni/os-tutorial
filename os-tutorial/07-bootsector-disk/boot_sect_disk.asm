@@ -15,5 +15,7 @@ disk_load:
     ; (0 = floppy, 1 = floppy2, 0x80 = hdd, 0x81 = hdd2)
     mov dh, 0x00 ; dh <- head number (0x0 .. 0xF)
 
+    ; [es:bx] <- pointer to buffer where the data will be stored
+    ; caller sets it up for us, and it is actually the standard location for int 13th
     int 0x13      ; BIOS interrupt
     jc disk_error ; if error (stored in the carry bit)
