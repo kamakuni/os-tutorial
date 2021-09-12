@@ -25,3 +25,11 @@ disk_load:
     jne sectors_error
     popa
     ret
+
+disk_error:
+    mov bx, DISK_ERROR
+    call print
+    call print_nl
+    mov dh, ah ; ah = error code, dl = disk drive that dropped the error
+    call print_hex ; check out the code at http://stanislavs.org/helppc/int_13-1.html
+    jmp disk_loop
