@@ -8,3 +8,8 @@ CC = /usr/local/i386elfgcc/bin/i386-elf-gcc
 GDB = /usr/local/i386elfgcc/bin/i386-elf-gdb
 # -g: Use debugging symbols in gcc
 CFLAGS = -g
+
+# First rule is run by default
+os-image.bin: boot/bootsect.bin kernel.bin
+		cat $^ > os-image.bin
+
