@@ -17,3 +17,7 @@ os-image.bin: boot/bootsect.bin kernel.bin
 # to 'strip' them manually on this case
 kernel.bin: boot/kernel_entry.o ${OBJ}
 	i386-elf-ld -o $@ -Ttext 0x1000 $^ --oformat binary
+
+# Used for debugging purposes
+kernel.elf: boot/kernel_entry.o ${OBJ}
+	i386-elf-ld -o $@ -Ttext 0x1000 $^
