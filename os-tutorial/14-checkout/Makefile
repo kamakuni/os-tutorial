@@ -29,3 +29,7 @@ run: os-image.bin
 bebug: os-image.bin kernel.elf
 	qemu-system-i386 -s -fda os-image.bin &
 	${GDB} -ex "target remote loacalhost:1234" -ex "symbol-file kernel.elf"
+
+clean:
+	rm -rf *.bin *.dis *.o os-image.bin *.elf
+	rm -rf kernel/*.o boot/*.bin drivers/*.o boot/*.o
