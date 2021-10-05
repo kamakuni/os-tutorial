@@ -30,6 +30,11 @@ bebug: os-image.bin kernel.elf
 	qemu-system-i386 -s -fda os-image.bin &
 	${GDB} -ex "target remote loacalhost:1234" -ex "symbol-file kernel.elf"
 
+# Generic rules for wildcards
+# To make an object, always compile from its.c
+%.o: %.c ${HEADERS}
+		${CC} ${CFLAGS} -ffreestanding -c $< -o $@
+
 clean:
 	rm -rf *.bin *.dis *.o os-image.bin *.elf
 	rm -rf kernel/*.o boot/*.bin drivers/*.o boot/*.o
