@@ -35,6 +35,9 @@ bebug: os-image.bin kernel.elf
 %.o: %.c ${HEADERS}
 		${CC} ${CFLAGS} -ffreestanding -c $< -o $@
 
+%.o: %.asm
+		nasm $< -f elf -o $@
+
 clean:
 	rm -rf *.bin *.dis *.o os-image.bin *.elf
 	rm -rf kernel/*.o boot/*.bin drivers/*.o boot/*.o
