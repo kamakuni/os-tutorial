@@ -18,7 +18,7 @@
 
     jmp $
 
-%include "../05-bootsector-functons-strings/boot_sect_print.asm"
+%include "../05-bootsector-functions-strings/boot_sect_print.asm"
 %include "../05-bootsector-functions-strings/boot_sect_print_hex.asm"
 %include "boot_sect_disk.asm"
 
