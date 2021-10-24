@@ -17,7 +17,7 @@ print_string_pm_loop:
 
     mov [edx], ax ; store character + attribute in video memory
     add ebx, 1 ; next char
-    add ebx, 2 ; next video memory position
+    add edx, 2 ; next video memory position
 
     jmp print_string_pm_loop
 
