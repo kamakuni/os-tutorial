@@ -18,7 +18,6 @@ mov al, [es:the_secret]
 int 0x10
 
 
-
 jmp $
 
 the_secret:
