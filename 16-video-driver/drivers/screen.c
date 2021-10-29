@@ -41,3 +41,43 @@ void kprint_at(char *message, int col, int row) {
 void kprint(char *message) {
     kprint_at(message, -1,-1);
 }
+
+/***********************************************************
+ * Private Kernel functions                                *
+ ***********************************************************/
+
+/**
+ * Innermost print function for our kernel, directly accesses the video memory
+ *
+ * If 'col' and 'row' are negative, we will print at current cursor location
+ * If 'attr' is zero it will use 'white on black' as default
+ * Returns the offset of the next character
+ * Sets the video cursor to the returned offset
+ **/
+int print_char(char c, int col, int row,char attr) {
+    unsigned char *vidmem = (unsigned char*) VIDEO_ADDRESS;
+    if (!attr) attr = WHITE_ON_BLACK;
+
+    /* Error control: print a red 'E' if the coords aren't right */
+    if (col >= MAX_COLS || row >= MAX_ROWS) {
+        vidmem[2*(MAX_COLS)*(MAX_ROWS)-2] = 'E';
+        vidmem[2*(MAX_COLS)*(MAX_ROWS)-1] = RED_ON_WHITE;
+        return get_offset(col, row);
+    }
+
+    int offset;
+    if (col >= 0 && row >= 0) offset = get_offset(col, row);
+    else offset = get_cursor_offset();
+
+    if (c == '\n') {
+        row = get_offset_row(offset);
+        offset = get_offset(0, row+1);
+    } else {
+        vidmem[offset] = c;
+        vidmem[offset+1] = attr;
+        offset += 2;
+    }
+    set_cursor_offset(offset);
+    return offset;
+}
+
