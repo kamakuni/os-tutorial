@@ -10,7 +10,7 @@ mov al, [the_secret]
 int 0x10
 
 mov al, [es:the_secret]
-int 0x10 ; doesn't look right... isn't es currently 0x000?
+int 0x10 ; doesn't look right... isn't 'es' currently 0x000?
 
 mov bx, 0x7c0
 mov es, bx
@@ -21,7 +21,7 @@ int 0x10
 jmp $
 
 the_secret:
-    db 'X'
+    db "X"
 
 times 510 - ($-$$) db 0
 dw 0xaa55

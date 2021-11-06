@@ -2,13 +2,13 @@
     mov bp, 0x8000 ; set the stack safely away from us
     mov sp, bp
 
-    mov bx, 0x9000 ; es:bx = 0x0000:0x9000 = 0x9000
+    mov bx, 0x9000 ; es:bx = 0x0000:0x9000 = 0x09000
     mov dh, 2 ; read 2 sectors
     ; the bios sets 'dl' for our boot disk number
     ; if you have trouble, use the '-fda' flag: 'qemu -fda file.bin'
     call disk_load
 
-    mov dx, [0x9000] ; retrieve the first loaded word, 0xdata
+    mov dx, [0x9000] ; retrieve the first loaded word, 0xdada
     call print_hex
 
     call print_nl
@@ -22,7 +22,7 @@
 %include "../05-bootsector-functions-strings/boot_sect_print_hex.asm"
 %include "boot_sect_disk.asm"
 
-; Maginc number
+; Magic number
 times 510 - ($-$$) db 0
 dw 0xaa55
 
