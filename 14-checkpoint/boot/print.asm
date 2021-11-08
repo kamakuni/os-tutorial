@@ -2,15 +2,15 @@ print:
     pusha
 
 ; keep this in mind:
-; while (strings[i] != 0) { print string[i] i++ }
+; while (string[i] != 0) { print string[i]; i++ }
 
 ; the comparison for string end (null byte)
 start:
     mov al, [bx] ; 'bx' is the base address for the string
-    comp al, 0
+    cmp al, 0
     je done
 
-    ; this part where we print with the BIOS help
+    ; the part where we print with the BIOS help
     mov ah, 0x0e
     int 0x10 ; 'al' already contains the char
 
@@ -22,6 +22,8 @@ done:
     popa
     ret
 
+
+
 print_nl:
     pusha
 
@@ -29,6 +31,6 @@ print_nl:
     mov al, 0x0a ; newline char
     int 0x10
     mov al, 0x0d ; carriage return
-
+    int 0x10
     popa
     ret
