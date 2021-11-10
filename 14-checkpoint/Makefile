@@ -1,9 +1,9 @@
 C_SOURCES = $(wildcard kernel/*.c drivers/*.c)
 HEADERS = $(wildcard kernel/*.h drivers/*.h)
-# Nice syntax for file extention replacement
+# Nice syntax for file extension replacement
 OBJ = ${C_SOURCES:.c=.o}
 
-# Change this if your compiler is somewhere else
+# Change this if your cross-compiler is somewhere else
 CC = /usr/local/i386elfgcc/bin/i386-elf-gcc
 GDB = /usr/local/i386elfgcc/bin/i386-elf-gdb
 # -g: Use debugging symbols in gcc
@@ -26,9 +26,9 @@ run: os-image.bin
 	qemu-system-i386 -fda os-image.bin
 
 # Open the connection to qemu and load our kernel-object file with symbols
-bebug: os-image.bin kernel.elf
+debug: os-image.bin kernel.elf
 	qemu-system-i386 -s -fda os-image.bin &
-	${GDB} -ex "target remote loacalhost:1234" -ex "symbol-file kernel.elf"
+	${GDB} -ex "target remote localhost:1234" -ex "symbol-file kernel.elf"
 
 # Generic rules for wildcards
 # To make an object, always compile from its.c
@@ -37,6 +37,7 @@ bebug: os-image.bin kernel.elf
 
 %.o: %.asm
 		nasm $< -f elf -o $@
+		
 %.bin: %.asm
 		nasm $< -f bin -o $@
 
