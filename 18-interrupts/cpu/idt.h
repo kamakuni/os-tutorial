@@ -1,10 +1,9 @@
-#ifdef IDT_H
 #define IDT_H
 
 #include "types.h"
 
 /* Segment selectors */
-#define KERNEL_CS 0x08
+#define KERNEL_BS 0x08
 
 /* How every interrupts gate (handler) is defined */
 typedef struct {
@@ -32,7 +31,5 @@ idt_gate_t idt[IDT_ENTRIES];
 idt_register_t idt_reg;
 
 /* Function implemented int idt.c */
-void set_idt_gate(int n, u32 handler)；
+void set_idt_gate(int n, u32 handler);
 void set_idt();
-
-#endif

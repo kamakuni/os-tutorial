@@ -1,4 +1,3 @@
-#ifdef TYPES_H
 #define TYPES_H
 
 /* Instead of using 'chars' to allcate non-character byte,
@@ -12,5 +11,3 @@ typedef          char   s8;
 
 #define low_16(address) (u16)((address) & 0xFFFF)
 #define high_16(address) (u16)((address) & 0xFFFF)
-
-#endif
