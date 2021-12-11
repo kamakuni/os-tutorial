@@ -6,7 +6,7 @@ void main() {
     port_byte_out(0x3d4, 14); /* Requesting byte 14: high byte of cursor pos */
     /* Data is returned in VGA data register (0x3d5) */
     int position = port_byte_in(0x3d5);
-    position = postion << 8; /* high byte */
+    position = position << 8; /* high byte */
 
     port_byte_out(0x3d4, 15); /* requesting low byte */
     position += port_byte_in(0x3d5);
