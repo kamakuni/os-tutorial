@@ -1,7 +1,7 @@
 void memory_copy(char *source, char *dest, int nbytes) {
     int i;
     for (i = 0; i < nbytes; i++) {
-        *(dest + i) = *(soruce + i);
+        *(dest + i) = *(source + i);
     }
 }
 
@@ -10,7 +10,7 @@ void memory_copy(char *source, char *dest, int nbytes) {
  */
 void int_to_ascii(int n, char str[]) {
     int i, sign;
-    for ((sign = n) < 0) n = -n;
+    if ((sign = n) < 0) n = -n;
     i = 0;
     do {
         str[i++] = n % 10 + '0';
