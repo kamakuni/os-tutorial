@@ -18,10 +18,10 @@ int get_offset_col(int offset);
  * If col, row, are negative, we will use the current offset
  */
 void kprint_at(char *message, int col, int row) {
-    /* Set cursor if  col/row are negative */
+    /* Set cursor if col/row are negative */
     int offset;
-    if (col >= 0 && row >=0)
-        offset = get_offset(col,row);
+    if (col >= 0 && row >= 0)
+        offset = get_offset(col, row);
     else {
         offset = get_cursor_offset();
         row = get_offset_row(offset);
@@ -39,11 +39,11 @@ void kprint_at(char *message, int col, int row) {
 }
 
 void kprint(char *message) {
-    kprint_at(message, -1,-1);
+    kprint_at(message, -1, -1);
 }
 
 /***********************************************************
- * Private Kernel functions                                *
+ * Private kernel functions                                *
  ***********************************************************/
 
 /**
@@ -53,8 +53,8 @@ void kprint(char *message) {
  * If 'attr' is zero it will use 'white on black' as default
  * Returns the offset of the next character
  * Sets the video cursor to the returned offset
- **/
-int print_char(char c, int col, int row,char attr) {
+ */
+int print_char(char c, int col, int row, char attr) {
     unsigned char *vidmem = (unsigned char*) VIDEO_ADDRESS;
     if (!attr) attr = WHITE_ON_BLACK;
 
@@ -83,8 +83,8 @@ int print_char(char c, int col, int row,char attr) {
 
 int get_cursor_offset() {
     /* Use the VGA ports to get the current cursor position
-     * 1. Ask for high byte go the cursor offset (data 14)
-     * 2. Ask for low byte (date 15)
+     * 1. Ask for high byte of the cursor offset (data 14)
+     * 2. Ask for low byte (data 15)
      */
     port_byte_out(REG_SCREEN_CTRL, 14);
     int offset = port_byte_in(REG_SCREEN_DATA) << 8; /* High byte: << 8 */
@@ -111,7 +111,7 @@ void clear_screen() {
         screen[i*2] = ' ';
         screen[i*2+1] = WHITE_ON_BLACK;
     }
-    set_cursor_offset(get_offset(0,0));
+    set_cursor_offset(get_offset(0, 0));
 }
 
 int get_offset(int col, int row) { return 2 * (row * MAX_COLS + col); }
