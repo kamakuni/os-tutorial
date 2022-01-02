@@ -13,5 +13,5 @@ void main() {
     }
 
     kprint_at("This text forces the kernel to scroll. Row 0 will disappear. ", 60, 24);
-    kprint("And with this text, the kernel will scroll again, adn row 1 will disappear too!");
+    kprint("And with this text, the kernel will scroll again, and row 1 will disappear too!");
 }

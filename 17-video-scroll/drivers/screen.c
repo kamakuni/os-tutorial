@@ -80,7 +80,7 @@ int print_char(char c, int col, int row,char attr) {
     }
 
     /* Check if the offset is over screen size and scroll */
-    if (offser >= MAX_ROWS * MAX_COLS * 2) {
+    if (offset >= MAX_ROWS * MAX_COLS * 2) {
         int i;
         for (i = 1; i < MAX_ROWS; i++)
             memory_copy(get_offset(0, i) + VIDEO_ADDRESS,
