@@ -26,7 +26,7 @@ void port_byte_out (u16 port, u8 data) {
 }
 
 u16 port_word_in (u16 port) {
-    unsigned short result;
+    u16 result;
     __asm__("in %%dx, %%ax" : "=a" (result) : "d" (port));
     return result;
 }
