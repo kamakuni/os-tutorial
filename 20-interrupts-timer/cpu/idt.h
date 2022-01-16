@@ -3,7 +3,7 @@
 #include "types.h"
 
 /* Segment selectors */
-#define KERNEL_BS 0x08
+#define KERNEL_CS 0x08
 
 /* How every interrupts gate (handler) is defined */
 typedef struct {
@@ -24,7 +24,7 @@ typedef struct {
 typedef struct {
     u16 limit;
     u32 base;
-} __attribute__((packed)) idt_regiter_t;
+} __attribute__((packed)) idt_register_t;
 
 #define IDT_ENTRIES 256
 idt_gate_t idt[IDT_ENTRIES];
