@@ -24,6 +24,33 @@ void print_letter(u8 scancode) {
         case 0x0:
             kprint("ERROR");
             break;
+        case 0x1:
+            kprint("ESC");
+            break;
+        case 0x2:
+            kprint("1");
+            break;
+        case 0x3:
+            kprint("2");
+            break;
+        case 0x4:
+            kprint("3");
+            break;
+        case 0x5:
+            kprint("4");
+            break;
+        case 0x6:
+            kprint("5");
+            break;
+        case 0x7:
+            kprint("6");
+            break;
+        case 0x8:
+            kprint("7");
+            break;
+        case 0x9:
+            kprint("8");
+            break;
         default:
             if (scancode <= 0x7f) {
                 kprint("Unknown key down");
