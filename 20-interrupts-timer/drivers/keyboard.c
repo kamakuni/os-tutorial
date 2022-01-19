@@ -51,6 +51,54 @@ void print_letter(u8 scancode) {
         case 0x9:
             kprint("8");
             break;
+        case 0x0A:
+            kprint("9");
+            break;
+        case 0x0B:
+            kprint("0");
+            break;
+        case 0x0C:
+            kprint("-");
+            break;
+        case 0x0D:
+            kprint("+");
+            break;
+        case 0x0E:
+            kprint("Backspace");
+            break;
+        case 0x0F:
+            kprint("Tab");
+            break;
+        case 0x10:
+            kprint("Q");
+            break;
+        case 0x11:
+            kprint("W");
+            break;
+        case 0x12:
+            kprint("E");
+            break;
+        case 0x13:
+            kprint("R");
+            break;
+        case 0x14:
+            kprint("T");
+            break;
+        case 0x15:
+            kprint("Y");
+            break;
+        case 0x16:
+            kprint("U");
+            break;
+        case 0x17:
+            kprint("I");
+            break;
+        case 0x18:
+            kprint("O");
+            break;
+        case 0x19:
+            kprint("P");
+            break;
         default:
             if (scancode <= 0x7f) {
                 kprint("Unknown key down");
