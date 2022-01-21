@@ -147,6 +147,24 @@ void print_letter(u8 scancode) {
         case 0x29:
             kprint("`");
             break;
+        case 0x2A:
+            kprint("LShift");
+            break;
+        case 0x2B:
+            kprint("\\");
+            break;
+        case 0x2C:
+            kprint("Z");
+            break
+        case 0x2D:
+            kprint("X");
+            break;
+        case 0x2E:
+            kprint("C");
+            break;
+        case 0x2F:
+            kprint("V");
+            break;
         default:
             if (scancode <= 0x7f) {
                 kprint("Unknown key down");
