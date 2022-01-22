@@ -165,6 +165,36 @@ void print_letter(u8 scancode) {
         case 0x2F:
             kprint("V");
             break;
+        case 0x30:
+            kprint("B");
+            break;
+        case 0x31:
+            kprint("N");
+            break;
+        case 0x32:
+            kprint("M");
+            break;
+        case 0x33:
+            kprint(",");
+            break;
+        case 0x34:
+            kprint("."):
+            break;
+        case 0x35:
+            kprint("/");
+            break;
+        case 0x36:
+            kprint("Rshift");
+            break;
+        case 0x37:
+            kprint("Keypad *");
+            break;
+        case 0x38:
+            kprint("LAlt");
+            break;
+        case 0x39:
+            kprint("Spc");
+            break;
         default:
             if (scancode <= 0x7f) {
                 kprint("Unknown key down");
