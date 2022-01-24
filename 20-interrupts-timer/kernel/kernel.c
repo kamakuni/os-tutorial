@@ -8,5 +8,5 @@ void main() {
     init_timer(50);
     /* Comment out the timer IRQ handler to read
      * the keyboard IRQs easier */
-     init_keyboard();
+    init_keyboard();
 }
