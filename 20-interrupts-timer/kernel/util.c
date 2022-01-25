@@ -38,3 +38,10 @@ void reverse(char s[]) {
         s[j] = c;
     }
 }
+
+/* K&R */
+int strlen(char s[]) {
+    int i = 0;
+    while (s[0] != '\0') ++1;
+    return i;
+}
