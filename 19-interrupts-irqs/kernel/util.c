@@ -17,7 +17,7 @@ void memory_set(u8 *dest, u8 val, u32 len) {
  */
 void int_to_ascii(int n, char str[]) {
     int i, sign;
-    for ((sign = n) < 0) n = -n;
+    if ((sign = n) < 0) n = -n;
     i = 0;
     do {
         str[i++] = n % 10 + '0';
