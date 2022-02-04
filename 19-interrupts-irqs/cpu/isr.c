@@ -55,22 +55,22 @@ void isr_install() {
     port_byte_out(0xA1, 0x0);
 
     // Install the IRQs
-    set_idt_gate(32, (u32)isq0);
-    set_idt_gate(33, (u32)isq1);
-    set_idt_gate(34, (u32)isq2);
-    set_idt_gate(35, (u32)isq3);
-    set_idt_gate(36, (u32)isq4);
-    set_idt_gate(37, (u32)isq5);
-    set_idt_gate(38, (u32)isq6);
-    set_idt_gate(39, (u32)isq7);
-    set_idt_gate(40, (u32)isq8);
-    set_idt_gate(41, (u32)isq9);
-    set_idt_gate(42, (u32)isq10);
-    set_idt_gate(43, (u32)isq11);
-    set_idt_gate(44, (u32)isq12);
-    set_idt_gate(45, (u32)isq13);
-    set_idt_gate(46, (u32)isq14);
-    set_idt_gate(47, (u32)isq15);
+    set_idt_gate(32, (u32)irq0);
+    set_idt_gate(33, (u32)irq1);
+    set_idt_gate(34, (u32)irq2);
+    set_idt_gate(35, (u32)irq3);
+    set_idt_gate(36, (u32)irq4);
+    set_idt_gate(37, (u32)irq5);
+    set_idt_gate(38, (u32)irq6);
+    set_idt_gate(39, (u32)irq7);
+    set_idt_gate(40, (u32)irq8);
+    set_idt_gate(41, (u32)irq9);
+    set_idt_gate(42, (u32)irq10);
+    set_idt_gate(43, (u32)irq11);
+    set_idt_gate(44, (u32)irq12);
+    set_idt_gate(45, (u32)irq13);
+    set_idt_gate(46, (u32)irq14);
+    set_idt_gate(47, (u32)irq15);
 
     set_idt(); // Load with ASM
 }
