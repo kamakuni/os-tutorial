@@ -155,7 +155,7 @@ void print_letter(u8 scancode) {
             break;
         case 0x2C:
             kprint("Z");
-            break
+            break;
         case 0x2D:
             kprint("X");
             break;
@@ -178,7 +178,7 @@ void print_letter(u8 scancode) {
             kprint(",");
             break;
         case 0x34:
-            kprint("."):
+            kprint(".");
             break;
         case 0x35:
             kprint("/");
