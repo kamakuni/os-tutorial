@@ -40,7 +40,7 @@ irq_common_stub:
     mov fs, ax
     mov gs, ax
     call irq_handler ; Different than the ISR code
-    pop eax ; Different that the IRQ code
+    pop ebx ; Different than the IRQ code
     mov ds, bx
     mov es, bx
     mov fs, bx
