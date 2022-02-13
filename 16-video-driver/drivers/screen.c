@@ -55,7 +55,7 @@ void kprint(char *message) {
  * Sets the video cursor to the returned offset
  */
 int print_char(char c, int col, int row, char attr) {
-    unsigned char *vidmem = (unsigned char*) VIDEO_ADDRESS;
+    unsigned char *vidmem = (unsigned char*) VIDEO_ADDRESS; /* address 0xb8000 */
     if (!attr) attr = WHITE_ON_BLACK;
 
     /* Error control: print a red 'E' if the coords aren't right */
@@ -67,17 +67,17 @@ int print_char(char c, int col, int row, char attr) {
 
     int offset;
     if (col >= 0 && row >= 0) offset = get_offset(col, row);
-    else offset = get_cursor_offset();
+    else offset = get_cursor_offset(); /* Get cursor postion from register 0x3d5 */
 
     if (c == '\n') {
         row = get_offset_row(offset);
-        offset = get_offset(0, row+1);
+        offset = get_offset(0, row+1); /* Get the first cell of the next line */ 
     } else {
-        vidmem[offset] = c;
-        vidmem[offset+1] = attr;
+        vidmem[offset] = c; /* set the character */
+        vidmem[offset+1] = attr; /* set an attribute for color */
         offset += 2;
     }
-    set_cursor_offset(offset);
+    set_cursor_offset(offset); /* set cursor postion to register 0x3d5 */
     return offset;
 }
 
@@ -105,7 +105,7 @@ void set_cursor_offset(int offset) {
 void clear_screen() {
     int screen_size = MAX_COLS * MAX_ROWS;
     int i;
-    char *screen = VIDEO_ADDRESS;
+    char *screen = VIDEO_ADDRESS; /* address 0xb8000 */
 
     for (i = 0; i < screen_size; i++) {
         screen[i*2] = ' ';
@@ -114,6 +114,7 @@ void clear_screen() {
     set_cursor_offset(get_offset(0, 0));
 }
 
+// https://github.com/cfenollosa/os-tutorial/tree/master/08-32bit-print
 int get_offset(int col, int row) { return 2 * (row * MAX_COLS + col); }
 int get_offset_row(int offset) { return offset / (2 * MAX_COLS); }
 int get_offset_col(int offset) { return (offset - (get_offset_row(offset)*2*MAX_COLS))/2; }
