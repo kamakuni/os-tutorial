@@ -26,7 +26,7 @@ void kprint_at(char *message, int col, int row) {
     else {
         offset = get_cursor_offset();
         row = get_offset_row(offset);
-        col = get_offset_col();
+        col = get_offset_col(offset);
     }
 
     /* Loop through message and print it */
@@ -109,7 +109,7 @@ int get_cursor_offset() {
     return offset * 2; /* Position * size of character cell */
 }
 
-void set_cursor_offset() {
+void set_cursor_offset(int offset) {
     /* Similar to get_cursor_offset, but instead of reading we write data */
     offset /= 2;
     port_byte_out(REG_SCREEN_CTRL, 14);
