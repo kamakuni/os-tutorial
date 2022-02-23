@@ -12,7 +12,7 @@
 static char key_buffer[256];
 
 #define SC_MAX 57
-const char *sc_name[] = { "ERROR", "Esc", "1", "2". "3", "4", "5", "6",
+const char *sc_name[] = { "ERROR", "Esc", "1", "2", "3", "4", "5", "6",
     "7", "8", "9", "0", "-", "=", "Backspace", "Tab", "Q", "W", "E",
         "R", "T", "Y", "U", "I", "O", "P", "[", "]", "Enter", "Lctrl",
         "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "`",
