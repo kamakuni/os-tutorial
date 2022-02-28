@@ -118,7 +118,7 @@ char *exception_messages[] = {
 
 void isr_handler(registers_t r)
 {
-    kprint("received interrupt ");
+    kprint("received interrupt: ");
     char s[3];
     int_to_ascii(r.int_no, s);
     kprint(s);
@@ -146,4 +146,13 @@ void irq_handler(registers_t r)
         isr_h handler = interrupt_handlers[r.int_no];
         handler(r);
     }
+}
+
+void irq_install() {
+    /* Enable interruptions */
+    asm volatile("sti");
+    /* IRQ0; timer */
+    init_timer(50);
+    /* IRQ1: keyboard */
+    init_keyboard();
 }
