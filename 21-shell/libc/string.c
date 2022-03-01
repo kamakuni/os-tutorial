@@ -3,7 +3,7 @@
 /**
  * K&R implementation
  */
-void int_to_ascii(int n, chawr str[]){
+void int_to_ascii(int n, char str[]){
     int i, sign;
     if ((sign = n) < 0) n = -n;
     i = 0;

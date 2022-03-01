@@ -5,12 +5,12 @@
 
 u32 tick = 0;
 
-static void timer_callback(register_t regs) {
+static void timer_callback(registers_t regs) {
     tick++;
     UNUSED(regs);
 }
 
-static void init_timer(u32 freg) {
+void init_timer(u32 freq) {
     /* Install the funcion we just wrote */
     register_interrupt_handler(IRQ0, timer_callback);
 

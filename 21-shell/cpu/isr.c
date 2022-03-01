@@ -141,9 +141,9 @@ void irq_handler(registers_t r)
     port_byte_out(0x20, 0x20);     /* master */
 
     /* Handle a interrupt in a more modular way */
-    if (interrupt_handler[r.int_no] != 0)
+    if (interrupt_handlers[r.int_no] != 0)
     {
-        isr_h handler = interrupt_handlers[r.int_no];
+        isr_t handler = interrupt_handlers[r.int_no];
         handler(r);
     }
 }
