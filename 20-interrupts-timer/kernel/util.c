@@ -26,7 +26,7 @@ void int_to_ascii(int n, char str[]) {
     if (sign < 0) str[i++] = '-';
     str[i] = '\0';
 
-    /* TODO: implememt "reverse" */
+    reverse(str);
 }
 
 /* K&R */
@@ -42,6 +42,6 @@ void reverse(char s[]) {
 /* K&R */
 int strlen(char s[]) {
     int i = 0;
-    while (s[0] != '\0') ++i;
+    while (s[i] != '\0') ++i;
     return i;
 }
