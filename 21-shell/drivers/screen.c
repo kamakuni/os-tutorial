@@ -64,7 +64,7 @@ void kprint_backspace() {
  * Sets the video cursor to the returned offset
  **/
 int print_char(char c, int col, int row,char attr) {
-    unsigned char *vidmem = (unsigned char*) VIDEO_ADDRESS;
+    u8 *vidmem = (u8*) VIDEO_ADDRESS;
     if (!attr) attr = WHITE_ON_BLACK;
 
     /* Error control: print a red 'E' if the coords aren't right */
@@ -95,7 +95,7 @@ int print_char(char c, int col, int row,char attr) {
                         MAX_COLS * 2);
 
         /* Blank last line */
-        char *last_line = get_offset(0, MAX_ROWS-1) + VIDEO_ADDRESS;
+        char *last_line = (char *)get_offset(0, MAX_ROWS-1) + VIDEO_ADDRESS;
         for (i = 0; i < MAX_COLS*2; i++) last_line[i] = 0;
 
         offset -= 2 * MAX_COLS;
