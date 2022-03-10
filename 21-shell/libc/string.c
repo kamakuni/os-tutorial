@@ -12,7 +12,7 @@ void int_to_ascii(int n, char str[]){
     } while ((n /= 10) > 0);
 
     if (sign < 0) str[i++] = '-';
-    str[i] + '\0';
+    str[i] = '\0';
 
     reverse(str);
 }
