@@ -8,7 +8,7 @@ void main() {
     irq_install();
 
     kprint("Type something, it will go through the kernel\n"
-        "Type END to halt CPU\n> ");
+        "Type END to halt the CPU\n> ");
 }
 
 void user_input(char *input) {

@@ -26,8 +26,8 @@ const char sc_ascii[] = { '?', '?', '1', '2', '3', '4', '5', '6',
 
 static void keyboard_callback(registers_t regs) {
     /* The PIC leaves us the scancode in port 0x60 */
+    kprint("debug:callback\n");
     u8 scancode = port_byte_in(0x60);
-
     if (scancode > SC_MAX) return;
     if (scancode == BACKSPACE) {
         backspace(key_buffer);
@@ -47,5 +47,6 @@ static void keyboard_callback(registers_t regs) {
 }
 
 void init_keyboard() {
+    kprint("debug:init_keyboard\n");
     register_interrupt_handler(IRQ1, keyboard_callback);
 }
