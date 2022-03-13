@@ -2,15 +2,18 @@
 #include "isr.h"
 #include "ports.h"
 #include "../libc/function.h"
+#include "../drivers/screen.h"
 
 u32 tick = 0;
 
 static void timer_callback(registers_t regs) {
+    kprint("debug:timer_callback");
     tick++;
     UNUSED(regs);
 }
 
 void init_timer(u32 freq) {
+    kprint("debug:init_timer");
     /* Install the funcion we just wrote */
     register_interrupt_handler(IRQ0, timer_callback);
 
