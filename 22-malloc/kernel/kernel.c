@@ -2,7 +2,7 @@
 #include "../drivers/screen.h"
 #include "kernel.h"
 #include "../libc/string.h"
-#include "../libc/"
+#include "../libc/mem.h"
 
 void main() {
     isr_install();
