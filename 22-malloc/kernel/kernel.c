@@ -22,7 +22,7 @@ void user_input(char *input) {
         u32 page = kmalloc(1000, 1, &phys_addr);
         char page_str[16] = "";
         hex_to_ascii(page, page_str);
-        char phys_str = "";
+        char phys_str[16] = "";
         hex_to_ascii(phys_addr, phys_str);
         kprint("Page: ");
         kprint(page_str);
