@@ -1,4 +1,5 @@
 #include "string.h"
+#include "../cpu/types.h"
 
 /**
  * K&R implementation
