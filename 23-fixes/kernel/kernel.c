@@ -4,12 +4,15 @@
 #include "../libc/string.h"
 #include "../libc/mem.h"
 
-void main() {
+void kernel_main() {
     isr_install();
     irq_install();
 
+    asm("int $2");
+    asm("int $3");
+
     kprint("Type something, it will go through the kernel\n"
-        "Type END to halt the CPU\n> ");
+        "Type END to halt the CPU or PAGE to request a kmalloc\n> ");
 }
 
 void user_input(char *input) {
